@@ -1,0 +1,36 @@
+name: prek checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+
+permissions:
+  contents: read
+
+jobs:
+  prek-checks:
+    name: Prek Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Cleaning up"
+        uses: gacts/run-and-post-run@81b6ce503cde93862cec047c54652e45c5dca991 # v1.4.3
+        with:
+          run: |
+            echo "Pre-Check Cleanup"
+            echo "~/.local" | xargs rm -rf
+          post: |
+            echo "Post-Check Cleanup"
+            echo "~/.local" | xargs rm -rf
+
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up mise
+        uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151
+
+      - name: Run prek checks
+        run: prek

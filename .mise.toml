@@ -1,0 +1,14 @@
+
+[tools]
+uv = 'latest'
+rumdl = 'latest'
+tombi = 'latest'
+shellcheck = 'latest'
+shfmt = 'latest'
+actionlint = 'latest'
+yamllint = 'latest'
+ghalint = 'latest'
+zizmor = 'latest'
+editorconfig-checker = 'latest'
+pinact = "latest"
+prek = "latest"
