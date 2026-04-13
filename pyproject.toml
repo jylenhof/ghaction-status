@@ -1,7 +1,7 @@
 [project]
-name = "show-status-each-github-action"
+name = "ghaction-status"
 version = "0.1.0"
-description = "Add your description here"
+description = "Get the status of each GitHub Action in a repository"
 readme = "README.md"
 requires-python = ">=3.14"
 authors = [{ name = "jylenhof", email = "jygithub@lenhof.eu.org" }]
@@ -10,7 +10,7 @@ dependencies = [
 ]
 
 [project.scripts]
-show-status-each-github-action = "show_status_each_github_action.main:main"
+ghaction-status = "ghaction_status.main:main"
 
 [dependency-groups]
 dev = [
