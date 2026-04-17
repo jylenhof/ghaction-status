@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Literal
 
 from github import Auth, Github
 from github.GithubException import GithubException
-from packaging.version import Version
+from packaging.version import InvalidVersion, Version
 
 if TYPE_CHECKING:
     import datetime
@@ -76,14 +76,22 @@ class GithubAction:
 
     def _set_recommended_reference_and_date(self, repo: Repository) -> None:
         """Determines the recommended reference and date."""
-        list_all_tags = list(repo.get_tags())
-        list_all_tags.sort(key=lambda tag: Version(tag.name), reverse=True)
+        valid_semver_tags = []
+        for tag in repo.get_tags():
+            try:
+                Version(tag.name)
+                valid_semver_tags.append(tag)
+            except InvalidVersion:
+                # Ignore tags that do not conform to semantic versioning
+                pass
+
+        valid_semver_tags.sort(key=lambda tag: Version(tag.name), reverse=True)
         if self.actual.type == "tag" or self.actual.description_type == "tag":
-            self.recommended.reference = list_all_tags[0].commit.sha
+            self.recommended.reference = valid_semver_tags[0].commit.sha
             self.recommended.date = repo.get_commit(
-                sha=list_all_tags[0].commit.sha,
+                sha=valid_semver_tags[0].commit.sha,
             ).commit.committer.date
-            self.recommended.description = f"# {list_all_tags[0].name}"
+            self.recommended.description = f"# {valid_semver_tags[0].name}"
         elif self.actual.type == "branch" or self.actual.description_type == "branch":
             self.recommended.reference = repo.get_branch(
                 self.recommended.reference,

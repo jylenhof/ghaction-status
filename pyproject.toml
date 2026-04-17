@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 authors = [{ name = "Jean-Yves LENHOF", email = "jygithub@lenhof.eu.org" }]
 dependencies = [
+  "packaging>=26.1",
   "pygithub>=2.9.0",
 ]
 

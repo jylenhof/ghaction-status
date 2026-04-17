@@ -170,6 +170,7 @@ name = "ghaction-status"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "packaging" },
     { name = "pygithub" },
 ]
 
@@ -182,7 +183,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pygithub", specifier = ">=2.9.0" }]
+requires-dist = [
+    { name = "packaging", specifier = ">=26.1" },
+    { name = "pygithub", specifier = ">=2.9.0" },
+]
 
 [package.metadata.requires-dev]
 dev = [
