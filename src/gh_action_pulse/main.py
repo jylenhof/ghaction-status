@@ -1,8 +1,8 @@
 """This script scans GitHub Actions workflow and action definition files for 'uses:' statements."""
 
-from ghaction_status.actions import UniqGithubActions
-from ghaction_status.full_list_of_existing_actions import FullListOfExistingActions
-from ghaction_status.helpers.constants import SEARCH_CONFIGS
+from gh_action_pulse.actions import UniqGithubActions
+from gh_action_pulse.full_list_of_existing_actions import FullListOfExistingActions
+from gh_action_pulse.helpers.constants import SEARCH_CONFIGS
 
 
 def main() -> None:

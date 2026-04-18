@@ -1,7 +1,7 @@
 [project]
-name = "ghaction-status"
+name = "gh-action-pulse"
 version = "0.1.0"
-description = "Get the status of each GitHub Action in a repository"
+description = "Get Health/Propose modifications of each GitHub Action in a repository"
 readme = "README.md"
 requires-python = ">=3.14"
 authors = [{ name = "Jean-Yves LENHOF", email = "jygithub@lenhof.eu.org" }]
@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [project.scripts]
-ghaction-status = "ghaction_status.main:main"
+gh-action-pualse = "gh_action_pulse.main:main"
 
 [dependency-groups]
 dev = [
