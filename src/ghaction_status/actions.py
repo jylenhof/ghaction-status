@@ -190,7 +190,7 @@ class UniqGithubActions:
 
     def init_from_full_list(self, full_list: dict[Path, list[dict[int, str]]])-> None:
         """Parse action references from a scanned list of file matches."""
-        action_pattern = re.compile(r"^\s*uses:\s*([^@\s]+)@([^\s#]+)(?:\s+#\s+(.+))?")
+        action_pattern = re.compile(r"^\s*[-]?\s{0,1}uses:\s*([^@\s]+)@([^\s#]+)(?:\s+#\s+(.+))?")
 
         for matches in full_list.values():
             for match_dict in matches:
