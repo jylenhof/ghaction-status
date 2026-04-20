@@ -89,7 +89,7 @@ class GithubAction:
                 # Ignore tags that do not conform to semantic versioning
                 pass
 
-        valid_semver_tags.sort(key=lambda tag: Version(tag.name), reverse=True)
+        valid_semver_tags.sort(key=lambda tag: Version(version=tag.name), reverse=True)
         if self.actual.type == "tag" or self.actual.description_type == "tag":
             self.recommended.reference = valid_semver_tags[0].commit.sha
             self.recommended.date = repo.get_commit(
