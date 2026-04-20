@@ -71,7 +71,7 @@ repos:
       # python checks
       - id: "ruff format"
         name: "ruff format"
-        entry: "uv run --frozen ruff format --check"
+        entry: "uv run --frozen ruff format"
         language: system
         files: '\.py$'
       - id: "ruff lint"
